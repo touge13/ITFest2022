@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Admin panel</title>
+  <link rel="icon" href="https://avatars.mds.yandex.net/get-zen_doc/3985561/pub_5fabb6e2d59a05137b6fbc6e_5fabb829d59a05137b722cc6/scale_1200"; type="image/x-icon" />
+<style>
+  body {
+  	background-color: #141617;
+  }
+  .sign-wrap-3 {
+  	text-align: center;
+      margin-top: 220px;
+  }
+  .sign-wrap-3 .sign_word {
+  	font-size: 40px;
+  	font-weight: bold;
+  	line-height: 50px;
+  	color: #222D32;
+  	font-family: 'Roboto', sans-serif;
+  	text-transform: uppercase;
+  	animation: neon-3 5s steps(1, start) infinite reverse;
+  }
+
+  @keyframes neon-3 {
+  	0%{
+  		color: #0f1213;
+  		text-shadow: 0 0 7px #0f1213, 0 0 8px #0f1213;
+  	}
+  	80%{
+  		color: #fff;
+  		text-shadow: 0 0 6px #fff,0 0 0px #fff,0 0 50px #0f1213;
+  	}
+  	81%{
+  		color: #E1F5FE;
+  		text-shadow: 0 0 6px #fff,0 0 0px #fff,0 0 50px #0f1213;
+  	}
+  	82%{color: #0f1213;
+  		text-shadow: 0 0 7px #0f1213, 0 0 8px #0f1213;
+  	}
+  	83%{
+  		color: #E1F5FE;
+  		text-shadow: 0 0 6px #fff,0 0 0px #fff,0 0 50px #0f1213;
+  	}
+  	84%{
+  		color: #0f1213;
+  		text-shadow: 0 0 7px #0f1213, 0 0 8px #0f1213;
+  	}
+  	85%{
+  		color: #E1F5FE;
+  		text-shadow: 0 0 6px #fff,0 0 0px #fff,0 0 50px #0f1213;
+  	}
+  	100%{
+  		color: #0f1213;
+  		text-shadow: 0 0 7px #0f1213,0 0 8px #0f1213;
+  	}
+  }
+
+  .navMenu {
+    font-family: 'Roboto', sans-serif;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    margin-top: 230px;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+  }
+
+  .navMenu a {
+    color: #f6f4e6;
+    text-decoration: none;
+    font-size: 1.2em;
+    text-transform: uppercase;
+    font-weight: 500;
+    display: inline-block;
+    -webkit-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+  }
+
+  .navMenu a:hover {
+    color: rgb(12, 147, 188);
+    text-shadow: 0 0 10px rgb(12, 147, 188);
+  }
+
+  .navMenu .dot {
+    width: 6px;
+    height: 6px;
+    background: rgb(12, 147, 188);
+    border-radius: 50%;
+    opacity: 0;
+    -webkit-transform: translateX(30px);
+    transform: translateX(30px);
+    -webkit-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+  }
+
+  .navMenu a:nth-child(1):hover ~ .dot {
+    -webkit-transform: translateX(30px);
+    transform: translateX(30px);
+    -webkit-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+    opacity: 1;
+  }
+
+  .navMenu a:nth-child(2):hover ~ .dot {
+    -webkit-transform: translateX(110px);
+    transform: translateX(110px);
+    -webkit-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+    opacity: 1;
+  }
+
+  .navMenu a:nth-child(3):hover ~ .dot {
+    -webkit-transform: translateX(200px);
+    transform: translateX(200px);
+    -webkit-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+    opacity: 1;
+  }
+
+  .navMenu a:nth-child(4):hover ~ .dot {
+    -webkit-transform: translateX(285px);
+    transform: translateX(285px);
+    -webkit-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+    opacity: 1;
+  }
+  
+  /* scrollbar */
+
+  ::-webkit-scrollbar { width: 8px; }
+
+  ::-webkit-scrollbar-track {
+    background: #141617;
+    border-radius: 5px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #03a9f4;
+    border-radius: 5px;
+  }
+
+
+  /* preloader */
+
+  .preloader {
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+    background: #141617;
+    color: #03a9f4;
+    z-index: 1001;
+  }
+
+  .preloader__image {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    width: 70px;
+    height: 70px;
+    margin-top: -35px;
+    margin-left: -35px;
+    text-align: center;
+    animation: preloader-rotate 2s infinite linear;
+  }
+
+  @keyframes preloader-rotate {
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  .loaded_hiding .preloader {
+    transition: 0.3s opacity;
+    opacity: 0;
+  }
+
+  .loaded .preloader {
+    display: none;
+  }
+</style>
+</head>
+
+<body>
+  <div class="preloader">
+    <svg class="preloader__image" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+      <path fill="currentColor"
+        d="M304 48c0 26.51-21.49 48-48 48s-48-21.49-48-48 21.49-48 48-48 48 21.49 48 48zm-48 368c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48zm208-208c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48zM96 256c0-26.51-21.49-48-48-48S0 229.49 0 256s21.49 48 48 48 48-21.49 48-48zm12.922 99.078c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48c0-26.509-21.491-48-48-48zm294.156 0c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48c0-26.509-21.49-48-48-48zM108.922 60.922c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.491-48-48-48z">
+      </path>
+    </svg>
+  </div>
+<div class="sign-wrap-3">
+    <span class="sign_word"><h1>404</h1><h3>Page Not Found</h3></span>
+</div>
+<nav class="navMenu">
+    <a href="{{ url_for('index') }}">Go home</a>
+</nav>
+<script>
+  window.onload = function () {
+    document.body.classList.add('loaded_hiding');
+    window.setTimeout(function () {
+      document.body.classList.add('loaded');
+      document.body.classList.remove('loaded_hiding');
+    }, 500);
+  }
+</script>
+</body>
+</html>
